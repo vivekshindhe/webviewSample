@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         webview = findViewById(R.id.ele_webview)
         groupNative = findViewById(R.id.group_native)
         btnReset = findViewById(R.id.btn_reset)
-
+        val myWebViewClient = MyWebViewClient(this)
         webview.settings.javaScriptEnabled = true;
         btnWebview.setOnClickListener {
-            webview.webViewClient = WebViewClient()
+            webview.webViewClient = myWebViewClient
             webview.loadUrl(etUrl.text.toString())
             flipVisibility()
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnBoth.setOnClickListener {
-            webview.webViewClient = WebViewClient()
+            webview.webViewClient = myWebViewClient
             webview.webChromeClient = WebChromeClient()
             webview.loadUrl(etUrl.text.toString())
             flipVisibility()
